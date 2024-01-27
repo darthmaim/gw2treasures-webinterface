@@ -83,6 +83,7 @@ export const ItemPageComponent: AsyncComponent<ItemPageComponentProps> = async (
       breadcrumb={`Item › ${data.type}${data.details ? ` › ${data.details?.type}` : ''}`}
       infobox={<ItemInfobox item={item} data={data} language={language}/>}
       actions={canHaveContents ? [<EditContents key="edit-content" appearance="menu" contents={item.contains} currencyContents={item.containsCurrency} itemId={item.id}/>] : undefined}
+      feedback
     >
       {item[`currentId_${language}`] !== revision.id && (
         <Notice icon="revision">You are viewing an old revision of this item{revision.buildId !== 0 && (<> (<Link href={`/build/${revision.buildId}`}>Build {revision.buildId}</Link>)</>)}. Some data is only available when viewing the latest version. <Link href={`/item/${item.id}`}>View latest</Link>.</Notice>

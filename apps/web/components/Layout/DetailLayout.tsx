@@ -7,6 +7,7 @@ import { Button } from '@gw2treasures/ui/components/Form/Button';
 import { Icon as IconComponent } from '@gw2treasures/ui';
 import { DropDown } from '@gw2treasures/ui/components/DropDown/DropDown';
 import { MenuList } from '@gw2treasures/ui/components/Layout/MenuList';
+import { Feedback } from '../Feedback/Feedback';
 
 interface DetailLayoutProps {
   title: ReactNode;
@@ -15,12 +16,13 @@ interface DetailLayoutProps {
   breadcrumb?: ReactNode;
   children: ReactNode;
   infobox?: ReactNode;
+  feedback?: boolean;
   className?: string;
   actions?: ReactNode[];
   color?: CSSProperties['--hero-color'];
 };
 
-const DetailLayout: FC<DetailLayoutProps> = ({ title, icon, breadcrumb, children, infobox, className, iconType, actions, color }) => {
+const DetailLayout: FC<DetailLayoutProps> = ({ title, icon, breadcrumb, children, infobox, feedback, className, iconType, actions, color }) => {
   return (
     <TableOfContentContext>
       <main className={[styles.main, className].filter(Boolean).join(' ')} style={color ? { '--hero-color': color } : undefined}>
@@ -48,6 +50,7 @@ const DetailLayout: FC<DetailLayoutProps> = ({ title, icon, breadcrumb, children
         <div className={styles.content}>
           {children}
         </div>
+        {feedback && (<Feedback/>)}
       </main>
     </TableOfContentContext>
   );
