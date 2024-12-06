@@ -1,4 +1,5 @@
 import nextJsPlugin from '@gw2treasures/eslint-plugin-nextjs';
+import reactConfig from '@gw2treasures/eslint-config/react';
 import reactCompiler from 'eslint-plugin-react-compiler';
 import js from '@eslint/js';
 import tseslint from 'typescript-eslint';
@@ -12,7 +13,8 @@ const compat = new FlatCompat({
 
 export default tseslint.config(
   { ignores: ['.next'] },
-  ...compat.extends('next/core-web-vitals', '@gw2treasures/eslint-config/react'),
+  ...compat.extends('next/core-web-vitals'),
+  ...reactConfig,
   {
     plugins: {
       '@gw2treasures/nextjs': nextJsPlugin,
